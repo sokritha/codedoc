@@ -17,7 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@jpedia/local-client": "^1.0.0"
+    "@jpedia/local-client": "^1.0.1"
   },
   "devDependencies": {
     "@jpedia/local-api": "^1.0.0",
