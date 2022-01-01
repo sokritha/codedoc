@@ -1,0 +1,10 @@
+.cell-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .react-draggable-trasparent-selection .cell-list {
+  margin-bottom: 120vh;
+} */

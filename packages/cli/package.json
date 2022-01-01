@@ -1,0 +1,29 @@
+{
+  "name": "jpedia",
+  "version": "1.0.0",
+  "description": "",
+  "bin": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsc --watch --preserveWatchOutput",
+    "prepublishOnly": "esbuild src/index.ts --bundle --define:process.env.NODE_ENV=\\\"production\\\" --minify --platform=node --outfile=dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@jpedia/local-client": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.3",
+    "esbuild": "^0.14.10",
+    "typescript": "^4.5.4",
+    "@jpedia/local-api": "^1.0.0",
+    "commander": "^8.3.0"
+  }
+}
