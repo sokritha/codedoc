@@ -1,5 +1,5 @@
 import "./code-editor.css";
-import Editor, { OnMount } from "@monaco-editor/react";
+import Editor, { OnMount, BeforeMount } from "@monaco-editor/react";
 import { useRef } from "react";
 import prettier from "prettier";
 import parser from "prettier/parser-babel";
@@ -19,11 +19,14 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   const handleEditorDidMount: OnMount = (editor, monaco) => {
     editorRef.current = editor;
 
+    // insert the default code when the component render
+    onChangeCode(initialValue);
+
     editor.onDidChangeModelContent(() => {
       onChangeCode(editor.getValue());
     });
 
-    editor.getModel()?.updateOptions({ tabSize: 2 });   
+    editor.getModel()?.updateOptions({ tabSize: 4 }); 
   };
 
   const handleFormatClick = () => {

@@ -3,6 +3,7 @@ import MDEditor from "@uiw/react-md-editor";
 import "./text-editor.css";
 import { Cell } from "../state/cell";
 import { useActions } from "../hooks/use-actions";
+import { sourceCellEditor } from '../utils/source-cell-editor';
 
 interface TextEditorProps {
   cell: Cell;
@@ -38,7 +39,7 @@ const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
       <div ref={mdEditorRef}>
         <MDEditor
           className="text-editor"
-          value={cell.content}
+          value={sourceCellEditor(cell, "text")}
           onChange={(v) => {
             updateCell(cell.id, v || "");
           }}
@@ -50,7 +51,7 @@ const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
   return (
     <div onClick={() => setEditing(true)} className="text-editor card">
       <div className="card-content">
-        <MDEditor.Markdown source={cell.content || "Click to edit"} />
+        <MDEditor.Markdown source={sourceCellEditor(cell, "text")} />
       </div>
     </div>
   );

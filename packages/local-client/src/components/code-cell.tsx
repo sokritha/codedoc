@@ -11,6 +11,7 @@ import { Cell } from "../state/cell";
 import { useActions } from "../hooks/use-actions";
 import { useTypedSelector } from "../hooks/use-typed-selector";
 import { useCumulativeCode } from "../hooks/use-cumulative";
+import { sourceCellEditor } from '../utils/source-cell-editor';
 
 interface CodeCellProps {
   cell: Cell;
@@ -50,7 +51,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
       >
         <Resizable direction="horizontal">
           <CodeEditor
-            initialValue={cell.content}
+            initialValue={sourceCellEditor(cell, "code")}
             onChangeCode={(value) => updateCell(cell.id, value)}
           />
         </Resizable>
