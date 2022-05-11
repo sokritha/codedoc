@@ -1,6 +1,6 @@
 {
   "name": "jpedia",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "bin": "dist/index.js",
   "publishConfig": {
@@ -17,10 +17,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@jpedia/local-client": "^1.0.2"
+    "@jpedia/local-client": "^1.0.3"
   },
   "devDependencies": {
-    "@jpedia/local-api": "^1.0.2",
+    "@jpedia/local-api": "^1.0.3",
     "@types/node": "^17.0.3",
     "commander": "^8.3.0",
     "esbuild": "^0.14.10",
