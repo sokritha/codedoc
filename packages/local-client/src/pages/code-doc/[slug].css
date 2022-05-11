@@ -1,0 +1,16 @@
+.code-doc-container {
+  display: flex;
+  width: 100%;
+}
+
+.code-doc-sidebar {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  height: calc(100vh - 52px);
+}
+
+.code-doc-content {
+  height: 100%;
+  flex-grow: 1;
+}

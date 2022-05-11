@@ -1,17 +1,17 @@
 import { useEffect } from "react";
-import "./code-cell.css";
+import "./index.css";
 
 // Components
-import CodeEditor from "./code-editor";
-import Preview from "./preview";
-import Resizable from "./resizable";
-import { Cell } from "../state/cell";
+import CodeEditor from "components/code-doc/code-editor";
+import Preview from "components/code-doc/preview";
+import Resizable from "components/code-doc/resizable";
+import { Cell } from "state/cell";
 
 // Helper Functions
-import { useActions } from "../hooks/use-actions";
-import { useTypedSelector } from "../hooks/use-typed-selector";
-import { useCumulativeCode } from "../hooks/use-cumulative";
-import { sourceCellEditor } from '../utils/source-cell-editor';
+import { useActions } from "hooks/use-actions";
+import { useTypedSelector } from "hooks/use-typed-selector";
+import { useCumulativeCode } from "hooks/use-cumulative";
+import { sourceCellEditor } from "utils/source-cell-editor";
 
 interface CodeCellProps {
   cell: Cell;
@@ -41,7 +41,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
   }, [cumulativeCode as string, cell.id, createBundle]);
 
   return (
-    <Resizable direction="vertical">
+    <Resizable direction="vertical" min={50} max={0.9}>
       <div
         style={{
           height: "96%",
@@ -49,7 +49,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
           flexDirection: "row",
         }}
       >
-        <Resizable direction="horizontal">
+        <Resizable direction="horizontal" min={0.2} max={0.55}>
           <CodeEditor
             initialValue={sourceCellEditor(cell, "code")}
             onChangeCode={(value) => updateCell(cell.id, value)}

@@ -1,11 +1,12 @@
-import { Cell } from "../state";
-import CodeCell from "./code-cell";
-import TextEditor from "./text-editor";
-import ActionBar from "./action-bar";
-import "./cell-list-item.css";
+import { Cell } from "state";
+import CodeCell from "components/code-doc/code-cell";
+import TextEditor from "components/code-doc/text-editor";
+import ActionBar from "components/code-doc/action-bar";
+import "./index.css";
 
 interface CellListItemProps {
   cell: Cell;
+  index: number;
 }
 
 const CellListItem: React.FC<CellListItemProps> = ({ cell }) => {

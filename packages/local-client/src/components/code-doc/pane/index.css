@@ -1,0 +1,29 @@
+.pane {
+  position: relative;
+  overflow: overlay;
+  width: 300px;
+}
+
+.pane::webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.pane::webkit-scrollbar-thumb {
+  webkit-transition: 0.3s ease-all;
+  background-color: rgba(255, 255, 0, 1);
+  border-color: transparent;
+}
+
+.dragbar {
+  background-color: rgb(52, 52, 52);
+  height: 100%;
+  width: 30px;
+  float: right;
+  cursor: col-resize;
+  z-index: 10;
+}
+
+.dragbar:hover {
+  background-color: #df691a;
+  width: 3px;
+}

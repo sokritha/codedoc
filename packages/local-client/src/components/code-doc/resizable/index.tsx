@@ -1,16 +1,23 @@
 import { ResizableBox, ResizableBoxProps } from "react-resizable";
-import "./resizable.css";
+import "./index.css";
 import { useEffect, useState } from "react";
 
 interface ResizableProps {
   direction: "horizontal" | "vertical";
+  min: number;
+  max: number;
 }
 
-const Resizable: React.FC<ResizableProps> = ({ direction, children }) => {
+const Resizable: React.FC<ResizableProps> = ({
+  direction,
+  min,
+  max,
+  children,
+}) => {
   let resizableProps: ResizableBoxProps;
   const [innerHeight, setInnerHeight] = useState(window.innerHeight);
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-  const [width, setWidth] = useState(window.innerWidth * 0.75);
+  const [width, setWidth] = useState(window.innerWidth * max);
 
   useEffect(() => {
     // debouncing
@@ -23,8 +30,8 @@ const Resizable: React.FC<ResizableProps> = ({ direction, children }) => {
         setInnerHeight(window.innerHeight);
         setInnerWidth(window.innerWidth);
 
-        if (window.innerWidth * 0.75 < width) {
-          setWidth(window.innerWidth * 0.75);
+        if (window.innerWidth * max < width) {
+          setWidth(window.innerWidth * max);
         }
       }, 100);
     };
@@ -42,19 +49,19 @@ const Resizable: React.FC<ResizableProps> = ({ direction, children }) => {
       height: Infinity,
       width: width,
       resizeHandles: ["e"],
-      maxConstraints: [innerWidth * 0.75, Infinity],
-      minConstraints: [innerWidth * 0.2, Infinity],
+      maxConstraints: [innerWidth * max, Infinity],
+      minConstraints: [innerWidth * min, Infinity],
       onResizeStop: (event, data) => {
         setWidth(data.size.width);
       },
     };
   } else {
     resizableProps = {
-      height: 300,
+      height: 400,
       width: Infinity,
       resizeHandles: ["s"],
-      maxConstraints: [Infinity, innerHeight * 0.9],
-      minConstraints: [Infinity, 50],
+      maxConstraints: [Infinity, innerHeight * max],
+      minConstraints: [Infinity, min],
     };
   }
 

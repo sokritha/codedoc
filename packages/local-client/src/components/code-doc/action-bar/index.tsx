@@ -1,11 +1,15 @@
-import { useActions } from "../hooks/use-actions";
-import "./action-bar.css";
+import "./index.css";
+import { useActions } from "hooks/use-actions";
+import { connect } from 'react-redux';
+import { RootState } from 'state/reducers/index';
+import { CellState } from "state/reducers/cellsReducer";
 
 interface ActionBarProps {
   id: string;
+  cells?: CellState;
 }
 
-const ActionBar: React.FC<ActionBarProps> = ({ id }) => {
+const ActionBar: React.FC<ActionBarProps> = ({id, cells}) => {
   const { moveCell, deleteCell } = useActions();
 
   return (
@@ -13,6 +17,7 @@ const ActionBar: React.FC<ActionBarProps> = ({ id }) => {
       <button
         className="button is-primary is-small"
         onClick={() => moveCell(id, "up")}
+        disabled={id === cells?.order[0]}
       >
         <span className="icon">
           <i className="fas fa-arrow-up"></i>
@@ -21,6 +26,7 @@ const ActionBar: React.FC<ActionBarProps> = ({ id }) => {
       <button
         className="button is-primary is-small"
         onClick={() => moveCell(id, "down")}
+        disabled={id === cells?.order[cells.order.length-1]}
       >
         <span className="icon">
           <i className="fas fa-arrow-down"></i>
@@ -38,4 +44,10 @@ const ActionBar: React.FC<ActionBarProps> = ({ id }) => {
   );
 };
 
-export default ActionBar;
+const mapStateToProps = (state: RootState) => {
+  return {
+    cells: state.cells
+  }
+}
+
+export default connect(mapStateToProps)(ActionBar);

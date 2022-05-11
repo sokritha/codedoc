@@ -1,0 +1,19 @@
+0 silly argv {
+0 silly argv   _: [ 'add' ],
+0 silly argv   dev: true,
+0 silly argv   D: true,
+0 silly argv   scope: '@jpedia/local-client',
+0 silly argv   globs: [],
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': 'C:\\Users\\PAVOLION\\AppData\\Roaming\\npm\\node_modules\\lerna\\cli.js',
+0 silly argv   pkg: 'react-split'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath D:\New Journey\Projects\jbook-app
+3 error FetchError: request to https://registry.npmjs.org/react-split failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org
+3 error     at ClientRequest.<anonymous> (C:\Users\PAVOLION\AppData\Roaming\npm\node_modules\lerna\node_modules\minipass-fetch\lib\index.js:110:14)
+3 error     at ClientRequest.emit (events.js:315:20)
+3 error     at TLSSocket.socketErrorListener (_http_client.js:469:9)
+3 error     at TLSSocket.emit (events.js:327:22)
+3 error     at emitErrorNT (internal/streams/destroy.js:106:8)
+3 error     at emitErrorCloseNT (internal/streams/destroy.js:74:3)

@@ -1,5 +1,5 @@
-import { useRef, useEffect } from "react";
-import "./preview.css";
+import { useRef, useEffect, useLayoutEffect } from "react";
+import "./index.css";
 
 interface PreviewProps {
   code: string;
@@ -38,7 +38,7 @@ const html = `
 const Preview: React.FC<PreviewProps> = ({ code, bundlingStatus }) => {
   const iframe = useRef<any>();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     iframe.current.srcdoc = html;
     setTimeout(() => {
       // post message btw windows & iframe
@@ -54,9 +54,7 @@ const Preview: React.FC<PreviewProps> = ({ code, bundlingStatus }) => {
         ref={iframe}
         title="preview"
       />
-      {
-        bundlingStatus && <div className="preview-error">{bundlingStatus }</div>
-      }
+      {bundlingStatus && <div className="preview-error">{bundlingStatus}</div>}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { Action } from "../actions";
 import { Cell } from "../cell";
 import produce from "immer";
 
-interface CellState {
+export interface CellState {
   loading: boolean;
   error: string | null;
   order: string[];
